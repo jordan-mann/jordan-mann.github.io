@@ -25,9 +25,11 @@ function length(string) {
  */
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
+    //force input string to lowercase
+    let newString = string.toLowerCase();
 
-
-
+    //return new string
+    return newString;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -36,9 +38,11 @@ function toLowerCase(string) {
  */
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
+    //force input string to uppercase
+    let newString = string.toUpperCase();
 
-
-
+    //return new string
+    return newString;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -57,8 +61,11 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
+    // force input string to dash case
+    let newString = string.toLowerCase().replace(/[' ']/g, '-');
 
-
+    //return new String
+    return newString;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -77,9 +84,18 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
-    
-
+    //create new string assigned to input string forced to lowercase
+    let newString = string.toLowerCase();
+    //create new character assigned to input character forced to lowercase
+    let newChar = char.toLowerCase();
+    //if new string begins with new character, return true
+    if(newString[0] === newChar) {
+        return true;
+    }
+    //otherwise return false
+    else {
+        return false;
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -97,8 +113,18 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
-
+    //create new string assigned to input string forced to lowercase
+    let newString = string.toLowerCase();
+    //create new character assigned to input character forced to lowercase
+    let newChar = char.toLowerCase();
+    //determine if new string ends with new character
+    if (newString[newString.length - 1] === newChar) {
+        //return true;
+        return true;
+    // else return false
+    }else { 
+        return false;
+    }
 
     // YOUR CODE ABOVE HERE //
 }
@@ -110,9 +136,11 @@ function endsWith(string, char) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    //create new string and assign it to the two input strings concatenated together
+    let newString = stringOne + stringTwo;
 
-
-
+    //return newString
+    return newString;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -129,7 +157,8 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
+    //return args using the join method
+    return args.join('');
 
     // YOUR CODE ABOVE HERE //
 }
@@ -145,9 +174,14 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
-
+    //determin if stringOne is longer than stringTwo
+    if (stringOne.length > stringTwo.length) {
+        //return stringOne
+        return stringOne;
+        //else return stringTwo
+    }else {
+        return stringTwo;
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -160,8 +194,19 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
+    //compare stringOne alphabetically to stringTwo using if statement
+    if (stringOne > stringTwo){
+        //return -1
+        return -1;
+    //compare stringOne alphabetically to stringTwo using else-if statement
+    }else if (stringOne < stringTwo) {
+        //return 1
+        return 1;
+    //compare if stringOne and StringTwo are alphabetically equal
+    } else if (stringOne === stringTwo) {
+        //return 0
+        return 0;
+    }
 
     // YOUR CODE ABOVE HERE //
 }
@@ -176,10 +221,19 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
-
-
+    //compare stringOne alphabetically to stringTwo using if statement
+    if (stringOne > stringTwo){
+        //return 1
+        return 1;
+    //compare stringOne alphabetically to stringTwo using else-if statement
+    }else if (stringOne < stringTwo) {
+        //return -1
+        return -1;
+    //compare if stringOne and StringTwo are alphabetically equal
+    } else if (stringOne === stringTwo) {
+        //return 0
+        return 0;
+    }
     // YOUR CODE ABOVE HERE //
 }
 
