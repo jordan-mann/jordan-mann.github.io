@@ -35,7 +35,16 @@
 
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
-    
+    let obj = {};
+    //create id key and assign it to id
+    obj.id = id;
+    //create nameFirst key and assign it to nameFirst
+    obj.nameFirst = nameFirst;
+    //create nameLast key and assign it to nameLast
+    obj.nameLast = nameLast;
+
+    //return obj
+    return obj;
 } 
 
 
@@ -43,12 +52,48 @@ function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
         // we implemented the length api for you //
         length: function() {
             return contacts.length;
+        },
+        addContact: function(contact) {
+            //use push method to push new contact into contacts array
+            contacts.push(contact);
+            return contacts;
+            
+        },
+        findContact: function(fullName) { //'Max Gaudin'
+            //use for loop to iterate through contact list
+            for (let i = 0; i < contacts.length; i++) {
+                //test if current contact object's nameFirst and nameLast equal fullName
+                if (contacts[i].nameFirst + ' ' + contacts[i].nameLast === fullName){
+                    //return contact object if nameFirst and nameLast equal fullName
+                    return contacts[i];
+                }
+            }
+        },
+        removeContact: function(contact) {
+            //use pop method to remove contact object from contacts list
+            contacts.pop(contact);
+            return contacts;
+        },
+        printAllContactNames: function() {
+            //create empty string to collect all but last name
+            let names = '';
+            //create empty string to collect last name
+            let finalName = '';
+            //use ofr loop to iterate through all but last contact of contact lis
+            for (let i = 0; i < contacts.length - 1; i++) {
+                 names += contacts[i].nameFirst + ' ' + contacts[i].nameLast + '\n';
+            }
+            //reassign finalName to last name of contact array
+            finalName = contacts[contacts.length - 1].nameFirst + ' ' + contacts[contacts.length - 1].nameLast;
+
+                //return names and finalName concatenated together
+                return names + finalName;
         }
     }
 }
