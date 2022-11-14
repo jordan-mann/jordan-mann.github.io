@@ -108,3 +108,43 @@ let greeting = function() {
 // Greeting is a function expression that does not take any parameters. This when the function is called, the given return statement will be executed. It needs no arguments to make this happen.
 
 console.log(greeting());   // Expect "Hello!" to print to the console.
+
+
+
+
+// 4. Scope
+// Functions are able to access and modify variables in the global scope. Functions can act upon variables that are also declared in the global scope and use them as arguments.
+// On the other hand, functions, which have their own function scope, cannot act on on variables in other functions' function scopes.
+
+let x = 2;
+let y = 10; 
+
+
+function addition(a, b) {
+  return a + b;
+}
+console.log(addition(x, y));
+
+// Expect 12 to print to the console. The variables x and y are in the global scope in this example, and can be accessed by the "addition" function to be used as arguments.
+
+
+let nameFirst = 'Jordan';
+let nameLast = 'Mann';
+
+function printName(name1, name2) {
+    let fullName = name1 + ' ' + name2;
+    return fullName;
+}
+
+console.log(printName(nameFirst, nameLast));  // Expect "Jordan Mann" to print to the console
+
+console.log(fullName);                        // Expect "ReferenceError: fullName is not defined" to print to the console. This console.log statement is in the global scope, and it is
+
+// trying to access a variable that is defined inside the function scope of the printName function. The global scope cannot access variables within a function scope, so this 
+// console.log statement cannot find the variable we are asking it act on.
+
+
+
+
+// 5. Closures
+// 
