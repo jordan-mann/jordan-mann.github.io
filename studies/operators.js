@@ -40,8 +40,10 @@ var name = 'Jordan';
 // Remainder: %;
 // Exponentiation: **; // x ** y = x to the power of y.
 
+{
 let x = 10;
 let y = 2;
+}
 
 // addition
 console.log('x + y = ', x + y);  // 12
@@ -150,9 +152,10 @@ console.log(!false); //expect true, because true IS NOT  false
 // 5.  Concat operator //
 // The concat operator (+) takes two strings and returns the value of both strings concatenated (joined) together.
 
-var nameFirst = ‘Jordan’;
 
-var nameLast = ‘Mann’;
+var nameFirst = 'Jordan';
+
+var nameLast = 'Mann';
 
 var nameFull = namefirst +  nameLast;
 
