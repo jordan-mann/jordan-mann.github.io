@@ -65,8 +65,7 @@ function fullName(firstName, lastName) {   // Declaring a function by writing "f
 }
 
 
-// Functions can also be created in a function expression. In this case, a function is assigned to a variable, or rather, the result of the function return is the value of the variable
-// so the variable value depends on the input argument for that function when the function is called.
+// Functions can also be created in a function expression. In this case, a function is assigned to a variable.
 
 let product = function(x, y) {    // The variable "product" is assigned to the given function. 
     return x * y;                 
