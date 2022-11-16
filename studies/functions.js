@@ -195,7 +195,7 @@ console.log(jordan('Mann'));
 
 // In the above example, there is an outer function that returns and inner function which returns both arguments concatenated together. By creating variables and assigning them to function calls using different arguments,
 // it is possible to see how each variable has it's own closure. Each function call expression, and the corresponding console.log statements create their own separate lexical environments in which each retains the 
-// individual closures and the variables associated with each.
+// individual closures and the variables associated with each. In the "joe" lexical environment, name1 is 'Joe', while in the "jordan" lexical environment, name1 is 'Jordan'.
 // Thus "console.log(joe('Brizek'))" will result in "Joe Brizek" printing to the console and "console.log(jordan('Mann'))" will result in "Jordan Mann" being printed to the console.
 
 
