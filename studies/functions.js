@@ -147,4 +147,58 @@ console.log(fullName);                        // Expect "ReferenceError: fullNam
 
 
 // 5. Closures
-// 
+// In the section above we discussed scope and how functions can access variables in the global scope or variables in their own local or function scope. There is more nuance to how function scope can operate with an 
+// understanding of closure.
+// Closure allows functions to have access to any variable contained in a parent function's scope, rather than those variables being locked and exclusive only to that individual function. These function scoped variables
+// are not available to all functions, but only functions that are nested within outer functions.
+// The revers is not true. Variables contained within a nested function will not be accessible to outer functions.
+
+function myName(name1, name2) {
+    let name1 = 'Jordan';
+    let name2 = 'Mann';
+      function fullName() {
+            console.log(name1 + ' ' + name2);
+        }
+        return fullName;
+}
+
+(myName())();
+
+// In the above example, we exepect "Jordan Mann" to log to the console. The reason is because the inner function "fullName", is able to access the variables name1 and name2 and log them to the console. This function
+// is able to do this because it is nested within the outer function "myName".
+// The function call for "myName" looks unique as well. The reason for this is that in order to call the inner function, that function call needs to be connected to a function call for the outer function. Calling
+// only the outer function "myName" will not result in anthything, because it returns the result of the function "fullName", which hasn't been called yet.
+// Thus, when the outer function is called "myName()", we must then include a function call for "fullName" as well to call both functions and get the desired result. "myName()" calls the outer function, and adding
+// an extra set of parentheses "myName()()", calls the inner function with it.
+// Perhaps and easier way to call the above function so that the function call is more understandable is assign the outer function call to an expression, and use that express to call the inner function:
+
+let callName = myName();
+
+callName();
+
+// In this case, the result is the same, and "Jordan Mann" will print to the console.
+
+
+
+function makeName(name1) {
+    return function(name2) {
+        return name1 + ' ' + name2;
+    }
+}
+
+let joe = makeName('Joe');
+let jordan = makeName('Jordan');
+
+console.log(joe('Brizek'));
+console.log(jordan('Mann'));
+
+
+// In the above example, there is an outer function that returns and inner function which returns both arguments concatenated together. By creating variables and assigning them to function calls using different arguments,
+// it is possible to see how each variable has it's own closure. Each function call expression, and the corresponding console.log statements create their own separate lexical environments in which each retains the 
+// individual closures and the variables associated with each.
+// Thus "console.log(joe('Brizek'))" will result in "Joe Brizek" printing to the console and "console.log(jordan('Mann'))" will result in "Jordan Mann" being printed to the console.
+
+
+
+
+
