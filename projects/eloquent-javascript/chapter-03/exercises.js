@@ -2,15 +2,35 @@
 // min /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function min() {
-
+function min(num1, num2) {
+  //use Math.min and return the smaller of the two input numbers
+return Math.min(num1, num2);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // isEven //////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function isEven() {
+function isEven(number) {
+  //create base case
+  //test if input number equals 0
+  if (number === 0) {
+    //if true, return true
+    return true;
+    //else test if input number equals 1
+  }else if (number === 1) {
+    //if ture, return false
+    return false;
+  } 
+    //test if input number is positive
+    if (number > 0) {
+      //call recursion and decrement input number by 2
+      return isEven(number - 2);
+      //else test if input number is negative
+    }else if (number < 0){
+      //call recursion an increment input number by 2
+      return isEven(number + 2)
+    }
 
 }
 
@@ -18,16 +38,39 @@ function isEven() {
 // countChars //////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countChars() {
-
+function countChars(string, char, array = []) {
+  //create base case
+  //test if string length is 0
+  if (string.length === 0) {
+    return array.length;
+  }
+  //recursion
+  //test if first character of string equals input char
+  if (string[0] === char) {
+    //if true, push char into array
+    array.push(string[0]);
+  }
+    //call recursion and slice string down to 0
+    return countChars(string.slice(1), char, array)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // countBs /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countBs() {
-
+function countBs(string, count = 0) {
+  //create base case
+  //test if string length is 0
+  if (string.length === 0) {
+    return count;
+  }
+  //recursion
+  //test if first character of string equals B
+  if (string[0] === 'B') {
+    count++;
+  }
+  //call recursion and slice string down to 0
+  return countBs(string.slice(1), count);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
