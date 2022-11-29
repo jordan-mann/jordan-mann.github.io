@@ -3,6 +3,8 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
+//const { includes } = require("lodash");
+
 var _ = {};
 
 
@@ -149,6 +151,36 @@ _.first = function(array, number) {
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
+ 
+_.last = function(array, number) {
+    //create newArray variable and assign it to an empty array
+    let newArray = [];
+    //test if number is negative
+    if (number < 0) {
+        //return empty array
+        return [];
+        //else if number is great than the length of the array
+    }else if (number > array.length) {
+        //return array
+        return array;
+        //test if input array is not an array
+    }else if (!(Array.isArray(array))) {
+        //if not an array, return empty array
+        return [];
+        //else, test if input number is not a number
+    }else if (typeof number !== 'number' || number === undefined) {
+        //return last element of array
+        return array[array.length - 1];
+        //else return the last <number> of items of array
+    }else{
+        //iterate through array
+        for (let i = array.length - number; i < array.length; i++) {
+            //push items into newArray
+            newArray.push(array[i]);
+        }
+    }
+    return newArray;
+}
 
 
 /** _.indexOf
@@ -166,7 +198,17 @@ _.first = function(array, number) {
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(array, value) {
+    //loop through input array
+    for (let i = 0; i < array.length; i++) {
+        //test if current item equals input value
+        if (array[i] === value) {
+            //if true, return index
+            return i;
+        }
+    }
+    return -1;
+}
 
 /** _.contains
 * Arguments:
@@ -182,6 +224,19 @@ _.first = function(array, number) {
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
+
+// _.contains = function(array, value) {
+//     for (let i = 0; i < array.length; i++) {
+
+//     }
+//   }
+
+  _.contains = function(array, value) {
+    //use .includes with a ternary operator to test if the value is in the array. True if so, false otherwise.
+  return array.includes(value) ? true : false;
+  }
+
+
 
 
 /** _.each
@@ -200,6 +255,23 @@ _.first = function(array, number) {
 *      -> should log "a" "b" "c" to the console
 */
 
+_.each = function(collection, func) {
+    //determine if collection is an array
+    if (Array.isArray(collection)) {
+        //iterate through collection
+        //call the function once for each element of the collection
+        for (let i = 0; i < collection.length; i++) {
+            func(collection[i], i, collection)
+        }
+    //else it's an obect
+    }else {
+        for (var key in collection) {
+            func(collection[key], key, collection)
+        }
+    }
+    return collection;
+}
+
 
 /** _.unique
 * Arguments:
@@ -210,6 +282,23 @@ _.first = function(array, number) {
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
+
+_.unique = function(array) {
+    //create variable and assign it to an empty array
+  let newArray = [];
+  
+  //use for loop to iterate through input array
+  for (let i = 0; i < array.length; i++) {
+  
+    //use if statement to test if if current value of array is not in the newArray && is not an empty string
+  if (newArray.indexOf(array[i]) === -1)
+  //if it passes both test, push that value into the newArray
+    newArray.push(array[i])
+  
+  }
+  return newArray;
+  }
+
 
 
 /** _.filter
@@ -228,6 +317,22 @@ _.first = function(array, number) {
 *   use _.each in your implementation
 */
 
+_.filter = function(array, func) {
+    //create newArray variable and assign it to an empty array
+    let newArray = [];
+    //iterate through input array
+    for (let i = 0; i < array.length; i++) {
+        //test if function call on current item is true
+        if(func(array[i], i, array) ===  true) {
+            //if true, push into newArray
+            newArray.push(array[i]);
+        }
+    }
+    //return newArray
+    return newArray;
+}
+
+
 
 /** _.reject
 * Arguments:
@@ -241,6 +346,20 @@ _.first = function(array, number) {
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+
+_.reject = function(array, func) {
+    //create newArray variable and assign it to an empty array
+    let newArray = [];
+    //iterate through input array
+    for (let i = 0; i < array.length; i++) {
+        //test if function call on current item is false
+        if (func(array[i], i, array) === false)
+        //if false, push into newArray
+        newArray.push(array[i]);
+    }
+    //return newArray
+    return newArray;
+}
 
 
 /** _.partition
@@ -261,6 +380,32 @@ _.first = function(array, number) {
 *   }); -> [[2,4],[1,3,5]]
 }
 */
+
+_.partition = function(array, func) {
+    //create three array variables
+    let newArray = [];
+    let truthyArray = [];
+    let falsyArray = [];
+
+    //iterate through input array
+    for (let i = 0; i < array.length; i++) {
+        //test if function call is truthy
+        if (func(array[i], i, array)) {
+            //if true, push into truthy array
+            truthyArray.push(array[i]);
+            //esle function call is falsy
+            //push item into falsy array
+        }else {
+            falsyArray.push(array[i]);
+        }
+    }
+    //push truthyArray into newArray
+    newArray.push(truthyArray);
+    //push falsyArray into newArray
+    newArray.push(falsyArray);
+    //return newArray
+    return newArray;
+}
 
 
 /** _.map
@@ -313,6 +458,53 @@ _.first = function(array, number) {
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
+_.every = function(collection, func) {
+    //determine if collection is an array
+    if (Array.isArray(collection)) {
+        // determine if func wasn't passed in
+        if (func === undefined){
+            for (let i = 0; i < collection.length; i++) {
+                //determine if the current item is not truthy
+                if (!collection[i]){
+                    //return false
+                    return false;
+                }
+            }
+        }else { //it was
+            for (let i = 0; i < collection.length; i++) {
+                //determine if current value return false when passed into func
+                if (func(collection[i], i, collection) === false) {
+                    //if any item was false, return false
+                    return false;
+                }
+            }
+        }
+        //else it's an object
+    }else {
+        //determine if func wasn't passed in
+        if (func === undefined) {
+            //iterate through object values
+            for (var key in collection) {
+                //test if any values are falsy
+                if (!collection[key]) {
+                    //if any item was falsy, return false
+                    return false;
+                }
+            }
+        }else { //else function was passed in
+            //loop through values in object
+            for (var key in collection) {
+                //test if function call on any item is false
+                if (func(collection[key], key, collection) === false) {
+                    //if any item is false, return false
+                    return false;
+                }
+            }
+        }
+        
+    }
+    return true;
+}
 
 /** _.some
 * Arguments:
