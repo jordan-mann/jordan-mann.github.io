@@ -207,6 +207,7 @@ _.indexOf = function(array, value) {
             return i;
         }
     }
+    //else return -1
     return -1;
 }
 
