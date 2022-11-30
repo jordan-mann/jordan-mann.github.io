@@ -632,6 +632,33 @@ _.some = function(collection, func) {
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
+_.reduce = function(array, func, seed) {
+    //create variable result
+    let acc = 0;
+    //test if seed is not passed in 
+    if (seed === undefined) {
+        //if seed is not passed in, acc eqauls first element of the input array
+        acc = array[0];
+        //loop through the array
+        for (let i = 1; i < array.length; i++) {
+            //acc equals the result of the function call on each item of the array
+            acc = func(acc, array[i], i, array) 
+        }
+        //else the seed is passed in
+    }else{
+        //acc equals seed
+        acc = seed;
+        //loop through array
+        for (let i = 0; i < array.length; i++) {
+            //acc equals the result of the function call on each item of the array
+           acc = func(acc, array[i], i, array) 
+            
+        }
+    }
+    //return acc
+    return acc;
+}
+
 
 /** _.extend
 * Arguments:
@@ -647,6 +674,18 @@ _.some = function(collection, func) {
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(object, ...moreObjects) {
+    //loop through moreObjects array
+    for (let i = 0; i < moreObjects.length; i++) {
+        //use Object.assign to extend input object with each object at the current iteration of the moreObjects array
+        Object.assign(object, moreObjects[i]) 
+    }
+    //return object
+    return object;
+}
+
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
