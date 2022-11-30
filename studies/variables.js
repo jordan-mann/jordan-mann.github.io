@@ -63,7 +63,7 @@ console.log(myName); // this prints => Reference error; myName is not defined. T
 
 
 /*
-The let statment also declares a variable. However, unlike var, let is usually block-scoped, rather than function-scoped or globablly-scoped. Being block scoped means that
+The let statment also declares a variable. However, unlike var, let is block-scoped, rather than function-scoped or globablly-scoped. Being block scoped means that
 that the variable declared with let will not be accessible from outside the particualr block of code it was declared in. A 'block' of code is code that is containted 
 in curly braces in a function.
 */
@@ -83,8 +83,8 @@ console.log(x); //prints => "Reference error: x is not defined" This happens bec
 
 
 /*
-The const statment declares a varialbe. const stands for constant. The const variable can have either global or block scoped, however, unlike var and let, the value
-of a constant can' be changed through reassignement. and it also can't be redeclared. However, in the case that the constant is an array or an object, while the fact
+The const statment declares a variable. const stands for constant. The const variable can have either global or block scope, however, unlike var and let, the value
+of a constant can't be changed through reassignement. and it also can't be redeclared. However, in the case that the constant is an array or an object, while the fact
 that it is an array or object is constant and can't be changed, the properties or items in the array or objects can be updated or removed.
 
 Because constants can't change, it must be declared and initialized at the same time, unlike other kinds of variables, which can be declared first and initialized later.
@@ -123,7 +123,7 @@ where the variables are declared, they are moved to the top of their scope, whet
 
 Doing so can result in unexpected errors, and so it not generally recommended.
 
-Javascript only hoists variable declarations, not initializations. This means that initialization will only happend when
+Javascript only hoists variable declarations, not initializations. This means that initialization will only happen when
 the line of code associated with initialization is executed. This is true even if the varalbe was initialized and then declared
 originally, or declaired and initialized together on the same line.
 
@@ -146,7 +146,7 @@ console.log(myName); //prints=> Jordan, because the code executing the initializ
 console.log(movie); // prints => ReferenceError becuase the varialbe movie has not yet been initialized. Because when the variable
 //belowe uses let, rather than being assigned 'undefined' we recieve a ReferenceError message.
 
-let move = 'Top Gun: Maverick'; // Initializatioin
+let movie = 'Top Gun: Maverick'; // Initializatioin
 
 
 console.log(city); // prints => ReferenceError becuase the varialbe movie has not yet been initialized. Because when the variable
