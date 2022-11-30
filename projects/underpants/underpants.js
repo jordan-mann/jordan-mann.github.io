@@ -425,6 +425,28 @@ _.partition = function(array, func) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function(collection, func) {
+    //create newArray variable and assign it to an empty array
+    let newArray = [];
+    //determine if collection is an array
+    if (Array.isArray(collection)) {
+        //if array, loop through array
+        for (let i = 0; i < collection.length; i++) {
+            //push the result of the function call on each item of the collection into the newArray
+            newArray.push(func(collection[i], i, collection)) 
+        }
+        //else collection is an object
+    }else {
+        //loop through keys value pairs
+        for (var key in collection) {
+            //push the result of the function call on each value in the collection object into newArray
+            newArray.push(func(collection[key], key, collection));
+        }
+    }
+    //return newArray
+    return newArray;
+}
+
 
 /** _.pluck
 * Arguments:
@@ -436,6 +458,15 @@ _.partition = function(array, func) {
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+
+_.pluck = function(array, property) {
+    //return the function call of map on the array
+    return array.map(function(item) {
+        //map pushes the items into an new array
+        return item[property];
+    })
+    
+}
 
 
 /** _.every
@@ -527,6 +558,59 @@ _.every = function(collection, func) {
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
+
+_.some = function(collection, func) {
+    //test if collection is an array
+    if(Array.isArray(collection)) {
+        //test if function is not given
+        if (func === undefined) {
+            //loop through collection
+            for (let i = 0; i < collection.length; i++) {
+                //test if each item is truthy
+                if (collection[i]) {
+                    //if any item is truthy, return true
+                    return true;
+                }
+            }
+            //else the function is given
+        }else {
+            //loop through collection
+            for (let i = 0; i < collection.length; i++) {
+                //test if the function call on each iteration of the collection is true
+                if (func(collection[i], i, collection) === true) {
+                    //if any is true, return true
+                    return true;
+                }  
+            }
+        }
+        //else the collection is an object
+    }else {
+        //test if the function is not given
+        if (func === undefined) {
+            //loop through values of the object
+            for (var key in collection) {
+                //test if the value is truthy
+                if (collection[key]) {
+                    //if any value is truthy, return true
+                    return true;
+                }
+            }
+            //else the function was given
+        }else {
+            //loop through values of the object
+            for (var key in collection) {
+                //test if the function call on each iteration of the collection is true
+                if (func(collection[key], key, collection) === true) {
+                    //if ny is true, return true
+                    return true;
+                }
+            }
+        }
+    }
+    //return false if no values returned true
+    return false;
+   
+}
 
 
 /** _.reduce
