@@ -119,6 +119,8 @@ var friendsCount = function(array, name) {
     return names;
 }
 
+
+
 var topThreeTags = function(array) {
     let allTags = _.map(array, function(current) {
         return current.tags;
@@ -126,25 +128,45 @@ var topThreeTags = function(array) {
     let flatTags = allTags.flat();
 
     let countedTags = {};
-   _.each(flatTags, function(current) {
-    countedTags[current] = (countedTags[current] || 0) + 1;
-   })
+    for(let i = 0; i < flatTags.length; i++) {
+        if(countedTags.hasOwnProperty(flatTags[i])) {
+            countedTags[flatTags[i]]++;
+        }else {
+            countedTags[flatTags[i]] = 1
+        }
+    }
+    countedTags = Object.entries(countedTags);
 
-   countedTags = Object.entries(countedTags);
+    let sortedTags = countedTags.sort(function(a, b) {
+       return b[1] - a[1];
+    })
 
-   let sortedTags = countedTags.sort(function(a, b) {
-    return b[1] - a[1];
-   })
+    let topTags = _.first(sortedTags, 3);
 
-   let topThree = _.first(sortedTags, 3);
-
-   let topTags = _.map(topThree, function(current) {
-    return current[0];
-   })
-   return topTags;
+    let topTagNames = _.map(topTags, function(current) {
+        return current[0];
+    })
+    return topTagNames;
 }
 
-var genderCount;
+
+
+var genderCount = function(array) {
+    let genders = _.reduce(array, function(acc, current, index, array) {
+      if (current.gender === 'male') {
+        acc.male++;
+      }if (current.gender === 'female') {
+        acc.female++;
+      }if (current.gender === 'non-binary') {
+        acc['non-binary']++
+      }
+      return acc;
+    }, {male: 0, female: 0, 'non-binary': 0})
+    return genders;
+  }
+
+
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
