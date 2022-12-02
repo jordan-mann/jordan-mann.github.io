@@ -155,9 +155,9 @@ var genderCount = function(array) {
     let genders = _.reduce(array, function(acc, current, index, array) {
       if (current.gender === 'male') {
         acc.male++;
-      }if (current.gender === 'female') {
+      }else if (current.gender === 'female') {
         acc.female++;
-      }if (current.gender === 'non-binary') {
+      }else {
         acc['non-binary']++
       }
       return acc;
