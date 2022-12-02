@@ -104,9 +104,45 @@ var friendFirstLetterCount = function (array, name, letter) {
     
 }
 
-var friendsCount;
+var friendsCount = function(array, name) {
+    let friends = _.filter(array, function(customer) {
+        for (let i = 0; i < customer.friends.length; i++) {
+            if (customer.friends[i].name === name) {
+                return true;
+            }
+        }
+        return false;
+    })
+    let names = _.map(friends, function(friend) {
+        return friend.name;
+    })
+    return names;
+}
 
-var topThreeTags;
+var topThreeTags = function(array) {
+    let allTags = _.map(array, function(current) {
+        return current.tags;
+    })
+    let flatTags = allTags.flat();
+
+    let countedTags = {};
+   _.each(flatTags, function(current) {
+    countedTags[current] = (countedTags[current] || 0) + 1;
+   })
+
+   countedTags = Object.entries(countedTags);
+
+   let sortedTags = countedTags.sort(function(a, b) {
+    return b[1] - a[1];
+   })
+
+   let topThree = _.first(sortedTags, 3);
+
+   let topTags = _.map(topThree, function(current) {
+    return current[0];
+   })
+   return topTags;
+}
 
 var genderCount;
 
