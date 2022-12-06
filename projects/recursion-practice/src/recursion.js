@@ -175,7 +175,23 @@ var reverse = function(string, array = []) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
-  
+  //reassign string to itself with spaces replaced with empty string. Use regular expression
+  string = string.replace(/\s/g, '')
+  //test if length of the string is 0 OR 1
+  if (string.length === 0 || string.length === 1) {
+    //return true
+    return true;
+  }
+  //test if first character of string equals last character of string
+  //force to lowercase
+  if (string[0].toLowerCase() === string[string.length - 1].toLowerCase()) {
+    //return the result of calling the function on the string with the first and last
+    //character sliced off
+    return palindrome(string.slice(1, -1));
+    //else it's not a palindrome and return false
+  }else {
+    return false;
+  }
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -314,7 +330,18 @@ var countOccurrence = function(array, value, count = 0) {
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
+var rMap = function(array, callback, output = []) {
+  //base
+  //test if length of array is 0
+  if (array.length === 0) {
+    //if true, return output
+    return output;
+  }
+  //push the result of the function call of the callback function on the current item of the 
+  //array into output
+  output.push(callback(array[0])); 
+  //return the result of the function call of rMap on the sliced array, callback, and output
+  return rMap(array.slice(1), callback, output);
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
@@ -349,18 +376,60 @@ var fibonacci = function(n) {
 // nthFibo(5); // 5
 // nthFibo(7); // 13
 // nthFibo(3); // 2
-var nthFibo = function(n) {
+
+//add default parameter fib to the function. It includes 0 and 1
+var nthFibo = function(n, fib = [0, 1]) {
+  //if n < 0 return null
+  if (n < 0) {
+    return null;
+  }
+  //if n is less than 1, return n
+  if (n < 1) {
+    return n;
+  }
+//rest if length of fib array equals input n + 1
+  if (fib.length === n + 1) {
+    //return the value at the n index of fib
+    return fib[n];
+  }
+  //find the result of the last two values in the fib array and add them together
+  //push that value into the fib array
+  fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
+  //return the result of the function call of nthFibo on n and fib
+  return (nthFibo(n, fib));
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
-var capitalizeWords = function(input) {
+var capitalizeWords = function(input, output = []) {
+  //base
+  //test if input length is 0
+  if (input.length === 0) {
+    //if true, return output
+    return output;
+  }
+  //push 0 index value of input into output. Force to upper case
+  output.push(input[0].toUpperCase());
+  //return the result of calling the recursive function on the input array and output array
+  //slice first item off input array
+  return capitalizeWords(input.slice(1), output);
 };
 
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
-var capitalizeFirst = function(array) {
+var capitalizeFirst = function(array, output = []) {
+  //test if length of the array is 0
+  if (array.length === 0) {
+    //if true, return output
+    return output;
+  }
+  //push 0 index value of input array into output. Force first character to upper case.
+  //Use slice method and concatenat first character back to remainder of word
+  output.push( array[0].charAt(0).toUpperCase() + array[0].slice(1));
+  //return the result of calling the recursive function on the input array and output array
+  //slice first item off input array
+  return (capitalizeFirst(array.slice(1), output));
 };
 
 // 28. Return the sum of all even numbers in an object containing nested objects.
