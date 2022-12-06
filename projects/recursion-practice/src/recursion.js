@@ -65,20 +65,25 @@ return isEven(n - 2);
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-var sumBelow = function(n) {
-  //base
-
+var sumBelow = function(n, sum = 0) {
+  //test if n equals 0
 if (n === 0) {
-  return 0;
+  //return sum
+  return sum;
+}
+//test if n is negative
+if (n < 0) {
+  //sum equals itself plus n plus 1
+  sum += (n + 1);
+  //return the result of a function call on n plus 1 and the current value of sum
+  return sumBelow(n + 1, sum); 
+}
+//if n is not negative, sum equals itslf plus n minus 1
+sum += (n - 1);
+//return the result of a function call on n minus 1 and the current value of sum
+return sumBelow(n - 1, sum);
 }
 
-if (n < 0) {
-  return sumBelow(n + 1) + (n + 1);
-}  
-  
-  return sumBelow(n - 1) + (n - 1);
-
-};
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
@@ -170,6 +175,7 @@ var reverse = function(string, array = []) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -183,12 +189,31 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
-var multiply = function(x, y) {
+var multiply = function(x, y, total = 0) {
+  if (y === 0) {
+    return total;
+  }
+
+  if (x < 0 && y > 0) {
+    total += x;
+    return multiply(x, y - 1, total);
+  }
+  else if (y < 0 && x > 0) {
+    total -= x;
+    return multiply(x, y + 1, total);
+  }
+  else if (y < 0 && x < 0) {
+    total -= x;
+    return multiply(x, y + 1, total);
+  }
+  total += x;
+  return multiply(x, y - 1, total);
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
-var divide = function(x, y) {
+var divide = function(x, y, output = 0) {
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers.  The GCD of two
@@ -205,27 +230,86 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  //base
+  //test if both strings have length of 0. Return true
+  if (str1.length === 0 && str2.length === 0) 
+  return true;
+  //test if first character of str1 equals first character of str2
+  if (str1[0] === str2[0]) {
+    //return the result of the function call on str1 and str2, with first character sliced off
+    return compareStr(str1.slice(1), str2.slice(1));
+  }
+  //if function above can't return, return false
+  return false;
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
+var createArray = function(str, array = []){
+  //base
+  //if length of string is 0...
+  if(str.length === 0) {
+  //return array
+    return array;
+  }
+//recursion
+//push first index of the string into the array
+array.push(str[0]);
+//return the result of the function call of the string with first character sliced, and array
+return createArray(str.slice(1), array);
 };
 
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function (array, newArray = []) {
+  //base
+  //test if array.length is 0
+  if (array.length === 0) {
+    //return newArray
+    return newArray;
+  }
+  //recursion
+  //use unshift to put the current item of array into newArray
+  newArray.unshift(array[0]);
+  //return the result of the function call of the string with first character sliced and array
+  return reverseArr(array.slice(1), newArray);
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
+var buildList = function(value, length, array = []) {
+  //base
+  //test if length equals 0
+  if (length === 0){
+  //return array
+     return array;
+    }
+    //recursion
+    //push value into array
+    array.push(value);
+    //return the result of the function call on the value and the input length decremented by 1, and the array
+    return buildList(value, length - 1, array);
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
-var countOccurrence = function(array, value) {
+var countOccurrence = function(array, value, count = 0) {
+  //base
+  //test if array.length is 0
+  if (array.length === 0) {
+  //return count
+    return count;
+  }
+  //recursion
+  //test if value at first index of array equals input value
+  if (array[0] === value) {
+    //increment count
+    count++;
+  } 
+  //return the result of a function call on the the first index of the array, the value and count
+  //slice the array
+  return countOccurrence(array.slice(1), value, count);
 };
 
 // 20. Write a recursive version of map.
