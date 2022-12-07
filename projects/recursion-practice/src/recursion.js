@@ -377,6 +377,7 @@ var fibonacci = function(n) {
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 
+
 //add default parameter fib to the function. It includes 0 and 1
 var nthFibo = function(n, fib = [0, 1]) {
   //if n < 0 return null
@@ -396,7 +397,7 @@ var nthFibo = function(n, fib = [0, 1]) {
   //push that value into the fib array
   fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
   //return the result of the function call of nthFibo on n and fib
-  return (nthFibo(n, fib));
+  return nthFibo(n, fib);
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
