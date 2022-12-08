@@ -109,15 +109,36 @@ function listToArray(list, output = []) {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
+function prepend(number, list) {
+ //create variable and assign it to an empty object
+  let object = {};
+  
+  //use dot notation to give the object a key of 'value' and a value of the input number
+  object.value = number;
+  //use dot notation to give the object a key of 'list' and a value of the input list
+  object.rest = list;
+//return object
+  return object;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
+function nth(list, number) {
+  //test if input number is negative
+  if (number < 0) {
+    //if true, return no value
+    return;
+  }
+  //test if input number is 0
+  if (number === 0) {
+    //if true, return current value
+    return list.value;
+  }
+//recursively return the result of the nth function call on the rest value, and number decremented
+return nth(list.rest, number - 1);
+
 
 }
 
@@ -125,8 +146,28 @@ function nth() {
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
+function deepEqual(x, y) {
+  if (typeof x !== 'object' && typeof y !== 'object') {
+    return x === y;
+  }
 
+  if (typeof x !== 'object' || typeof y !== 'object') {
+    return false;
+  }
+
+  let xKeys = Object.keys(x);
+  let yKeys = Object.keys(y);
+
+  if (xKeys.length !== yKeys.length) {
+    return false;
+  }
+
+  for (let i = 0; i < xKeys.length; i++) {
+    if (!yKeys.includes(xKeys[i]) || !deepEqual(x[xKeys[i]], y[xKeys[i]])) {
+      return false
+    }
+  }
+  return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
