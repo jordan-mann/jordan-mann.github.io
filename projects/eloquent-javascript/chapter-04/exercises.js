@@ -109,17 +109,28 @@ function listToArray(list, output = []) {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend(number, list) {
- //create variable and assign it to an empty object
-  let object = {};
+// function prepend(number, list) {
+//  //create variable and assign it to an empty object
+//   let object = {};
   
-  //use dot notation to give the object a key of 'value' and a value of the input number
-  object.value = number;
-  //use dot notation to give the object a key of 'list' and a value of the input list
-  object.rest = list;
-//return object
-  return object;
+//   //use dot notation to give the object a key of 'value' and a value of the input number
+//   object.value = number;
+//   //use dot notation to give the object a key of 'list' and a value of the input list
+//   object.rest = list;
+// //return object
+//   return object;
+// }
+
+
+
+function prepend(number, list) {
+  let myObject = {};
+  myObject.value = number;
+  myObject.rest = list;
+
+  return myObject;
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
@@ -138,9 +149,9 @@ function nth(list, number) {
   }
 //recursively return the result of the nth function call on the rest value, and number decremented
 return nth(list.rest, number - 1);
-
-
 }
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////

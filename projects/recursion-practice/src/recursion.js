@@ -400,6 +400,8 @@ var nthFibo = function(n, fib = [0, 1]) {
   return nthFibo(n, fib);
 };
 
+
+
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
@@ -467,6 +469,8 @@ var letterTally = function(str, obj = {}) {
 
 };
 
+
+
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
 // elements they should be replaced with a single copy of the element. The order of the
 // elements should not be changed.
@@ -475,7 +479,7 @@ var letterTally = function(str, obj = {}) {
 var compress = function(list, output = []) {
   //base
   //test if length of list is 0
-  if (list.length === 0) {[]
+  if (list.length === 0) {
     //return output
     return output;
   }
@@ -486,6 +490,8 @@ var compress = function(list, output = []) {
   }
   return compress(list.slice(1), output);
 };
+
+
 
 // 32. Augment every element in a list with a new value where each element is an array
 // itself.
@@ -504,17 +510,23 @@ var minimizeZeroes = function(array, output = []) {
   }
   //recursion
   //test if 0 index of array is 0 AND does not equal the value of the last index of the output array
-  if (array[0] === 0 && array[0] !== output[output.length - 1]) {
+  if (array[0] === 0) {
+    //if true, test if value at 0 index of array is not equal to value at end of output array
+    if (array[0] !== output[output.length - 1]) {
     //push value into output
     output.push(array[0]);
     //else test if value of 0 index is not 0
-  }else if (array[0] !== 0) {
+  }
+  }else  {
     //ps value into output
     output.push(array[0]);
-  };
+  }
   //return the result of the function call on the array and output. Slice first item from array
   return minimizeZeroes(array.slice(1), output);
 };
+
+
+
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
 // their original sign.  The first number in the index always needs to be positive.
