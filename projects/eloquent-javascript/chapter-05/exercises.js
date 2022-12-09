@@ -2,8 +2,16 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function flatten() {
-
+function flatten(superArray) {
+  //create variable and assign it to the function call of reduce on the superArray
+let flatArrays = superArray.reduce(function(acc, current) {
+  //reassign seed value to acc and concat method on current
+ acc = acc.concat(current);
+ //return acc
+  return acc;
+}, [])
+//return flatArrays
+return flatArrays;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
