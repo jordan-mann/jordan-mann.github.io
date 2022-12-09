@@ -18,16 +18,34 @@ return flatArrays;
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function loop() {
-
+function loop(value, testFunc, updateFunc, bodyFunc) {
+  //test if function call of testFunc on value is truthy
+  if (testFunc(value)) {
+    //if truthy, call bodyFunc on value
+    bodyFunc(value);
+    //then return and recursively call loop again, and update the input value
+    //by making it the result of a function call of updateFunc on value
+    return loop(updateFunc(value), testFunc, updateFunc, bodyFunc);
+  }
+  //if the original value passed into testFunc was falsy
+  return false;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
+function every(array, func) {
+  //loop through input array
+  for (let i = 0; i < array.length; i++) {
+    //test if function call on current element of array IS NOT truthy
+    if (!func(array[i])) {
+      //if not truthy, return false
+      return false;
+    }
+  }
+  //else return true
+  return true;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
