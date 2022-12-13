@@ -73,6 +73,12 @@ var age = 31;
 
 console.log(age === 21); //expect false. When age (31) is compared using logical operators, the result will be true if true, false if false.
 
+var x = (31 > 30);
+console.log(x); // expect true to log to the console, because x is assigned to the boolean value result of comparing if 31 is great than 30.
+
+var y = (31 < 30);
+console.log(y);// expect false to log to the console, because x is assigned to the boolean value result of comparing if 31 is less than 30.
+
 
 
 
@@ -87,6 +93,9 @@ var thingsOnMyDesk = ['computer', 'coffee', 'monitor', 'phone']; // this array i
 
 thingsOnMyDesk.push('lamp'); //The .push method is one of the ways an array can be manipulated to add more data to it. 
 // thingsOnMyDesk now looks like this: ['computer', 'coffee', 'monitor', 'phone', 'lamp'];
+
+thingsOnMyDesk.slice(1); //the .slice method is a way to remove, add or replace items in an array. In the current format given, the array counts to the first (1) index
+// and slices off the item before it. The resulting array would be ['coffee', 'monitor', 'phone', 'lamp'];
 
 var contactList = [{name: 'Bill', age: 40}, {name: 'Zach', age: 30}, {name: 'Bob', age: 35}]; //This is an example of an array holding a list of complex data types, 
 // specifically a list of objects.
