@@ -256,21 +256,33 @@ _.indexOf = function(array, value) {
 *      -> should log "a" "b" "c" to the console
 */
 
+// _.each = function(collection, func) {
+//     //determine if collection is an array
+//     if (Array.isArray(collection)) {
+//         //iterate through collection
+//         //call the function once for each element of the collection
+//         for (let i = 0; i < collection.length; i++) {
+//             func(collection[i], i, collection)
+//         }
+//     //else it's an obect
+//     }else {
+//         for (var key in collection) {
+//             func(collection[key], key, collection)
+//         }
+//     }
+//     return collection;
+// }
+
 _.each = function(collection, func) {
-    //determine if collection is an array
     if (Array.isArray(collection)) {
-        //iterate through collection
-        //call the function once for each element of the collection
         for (let i = 0; i < collection.length; i++) {
-            func(collection[i], i, collection)
+            func(collection[i], i, collection);
         }
-    //else it's an obect
     }else {
-        for (var key in collection) {
-            func(collection[key], key, collection)
+        for (let key in collection) {
+            func(collection[key], key, collection);
         }
     }
-    return collection;
 }
 
 
@@ -318,18 +330,28 @@ _.unique = function(array) {
 *   use _.each in your implementation
 */
 
+// _.filter = function(array, func) {
+//     //create newArray variable and assign it to an empty array
+//     let newArray = [];
+//     //iterate through input array
+//     for (let i = 0; i < array.length; i++) {
+//         //test if function call on current item is true
+//         if(func(array[i], i, array) ===  true) {
+//             //if true, push into newArray
+//             newArray.push(array[i]);
+//         }
+//     }
+//     //return newArray
+//     return newArray;
+// }
+
 _.filter = function(array, func) {
-    //create newArray variable and assign it to an empty array
     let newArray = [];
-    //iterate through input array
     for (let i = 0; i < array.length; i++) {
-        //test if function call on current item is true
-        if(func(array[i], i, array) ===  true) {
-            //if true, push into newArray
+        if (func(array[i], i, array) ===  true) {
             newArray.push(array[i]);
         }
     }
-    //return newArray
     return newArray;
 }
 
@@ -425,25 +447,39 @@ _.partition = function(array, func) {
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+// _.map = function(collection, func) {
+//     //create newArray variable and assign it to an empty array
+//     let newArray = [];
+//     //determine if collection is an array
+//     if (Array.isArray(collection)) {
+//         //if array, loop through array
+//         for (let i = 0; i < collection.length; i++) {
+//             //push the result of the function call on each item of the collection into the newArray
+//             newArray.push(func(collection[i], i, collection)) 
+//         }
+//         //else collection is an object
+//     }else {
+//         //loop through keys value pairs
+//         for (var key in collection) {
+//             //push the result of the function call on each value in the collection object into newArray
+//             newArray.push(func(collection[key], key, collection));
+//         }
+//     }
+//     //return newArray
+//     return newArray;
+// }
+
 _.map = function(collection, func) {
-    //create newArray variable and assign it to an empty array
     let newArray = [];
-    //determine if collection is an array
     if (Array.isArray(collection)) {
-        //if array, loop through array
         for (let i = 0; i < collection.length; i++) {
-            //push the result of the function call on each item of the collection into the newArray
-            newArray.push(func(collection[i], i, collection)) 
+            newArray.push(func(collection[i], i, collection));
         }
-        //else collection is an object
     }else {
-        //loop through keys value pairs
-        for (var key in collection) {
-            //push the result of the function call on each value in the collection object into newArray
+        for (let key in collection) {
             newArray.push(func(collection[key], key, collection));
         }
     }
-    //return newArray
     return newArray;
 }
 

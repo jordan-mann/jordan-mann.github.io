@@ -69,7 +69,7 @@ in curly braces in a function.
 */
 
 var a = 20;
-{
+if (a < 50) {
     let x = 30;
     console.log(x); // prints => 30, since this variable declared with let is inside the curly braces of the code block.
 
