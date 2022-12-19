@@ -28,6 +28,73 @@
 
 var name = 'Jordan';
 
+// Other assignement operators have the affect of changing the original value of a variable and reassigning it to a new value.
+// The addition assignment operator takes a value and adds it to another value, and reassigns the value of the original variable to the sum.
+
+let m = 5;
+
+m += 10;
+
+console.log(m); // Expect 15 to print to the console. m has been reaasigned to the value of the original value of m (5) plus 10, which is 15.
+
+//This operator can be used with strings as well.
+
+let name = '';
+
+name += 'Jordan';
+
+console.log(name); // Expect "Jordan" to print to the console. The value of the original variable has been reassigned to add the value of the new string to it.
+
+
+// The subtraction assignement operator takes a value and subtracts it from another value, and reassigns the value of the original variable to the difference.
+
+let n = 15;
+
+n -= 5;
+
+console.log(n); // Expect 10 to print to the console. n has been reassigned to the value of the original value of n (15) minus 5, which is 10.
+
+
+// The muliplication assignement operator takes a value and multiplies it to another value, and reassigns the value of the original variable to the product.
+
+let o = 10;
+
+o *= 10;
+
+console.log(o); // Expect 100 to print to the console. o has been reassigned to the value of the original value of o (10) times 10, which is 100.
+
+
+// The division assignement operator takes a value and divides it by another value, and reassigns the value of the original variable to the quotient.
+
+let p = 50; 
+
+p /= 10;
+
+console.log(p); // Expect 5 to print to the console. p has be reassigned tot he value of the orginal value of p (50) divided by 10, which is 5.
+
+
+// The remainder assignement operators takes a value and divides it by another value, and reassigns the vlaue of the original variable to the remainder.
+
+let q = 50;
+
+q %= 5;
+
+console.log(q); // Expect 0 to print to the console. q has been reassigned to the remainder of dividing the original value of q by 5. It is 0, as there is no remainder.
+
+let r = 50;
+
+r %= 3;
+
+console.log(r); // Expect 2 to print to the console. r has been reassigned to the remainder of dividing the original value of r by 3. The remainder of 50/3 is 2, and so r = 2.
+
+
+// The exponentiation assignement operators takes a value and reassigns it to the value of raising it to the power of the value to the right of the operand.
+
+let s = 5;
+
+s **= 3;
+
+console.log(s); //Expect 125 to print to the console. s has been reassigned to the original value of s (5) to the power of 3, which is 125.
 
 
 // 2. Arithmetic operators //
