@@ -47,7 +47,7 @@ function add(x, y) {  // i x = 2 and y = 5
 // The second phase of a function is to call the function. Once a function is declared, it can be used. To do this, we call it by giving the name of the function, and replacing 
 // the parameters with the arguments to be acted upon.
 
-add(2, 5); // This is how we call the add function declare above.
+add(2, 5); // This is how we call the add function declare above. We replace the original parameters with the arguments being passed in. In this case, 2 and 5.
 
 console.log(add(2, 5));  // This is how we log a function call to the console. The function add is wrapped inside the console.log statement. This function call will perform the function
 
