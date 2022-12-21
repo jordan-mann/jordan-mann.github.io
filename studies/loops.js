@@ -21,13 +21,13 @@
 // 1. While Loops
 // While loops are often used to create a counting sequence.
 // The basic logic of a while loop is that, while a specific statement is true, an action will be performed.
-{
+
 let n = 5;
 while (n < 10) {
     console.log(n);
     n++
 }
-}
+
 // In the above example, expect the console to print 5 6 7 8 9.
 // n starts at 5. When the code reads that n is less than 10, the action it performs is printing the value of n to the console.
 // After this action, the loop must increment or decrement to continue the loop cycle. In this case, it increments. Now the value of n is 6.
@@ -35,26 +35,26 @@ while (n < 10) {
 // The pattern will continue until the value of n is no longer less than 10. Once that comparison comes up as false, the code will end.
 
 // While loops can also count in reverse.
-{
+
 let n = 5;
 while (n > 0) {
     console.log(n);
     n--;
 }
-}
+
 // In this example, expect 5 4 3 2 1 to print to the console. The code works the same as the first example, except that it counts backwards,
 // and it does this because it decrements down toward the target number.
 
 // It is important to pay attention to how one decrements or increments in while loop. It is possible to create an infinite loop that will
 // crash a program if done incorrectly.
 
-{
+
 let n = 5;
 while (n > 0) {
     console.log(n);
     n++;
 }
-}
+
 // Expect the program to crash due to an infite loop. Because the starting value is 5, which is greater than 0, and the code increments by one
 // after each iteration, the code will always be greater than 0, incrementing to infinity.
 // The increment or decrement in a while loop must work in tandem with the target number in the while loop, so as to avoid infinite loops.
@@ -63,19 +63,23 @@ while (n > 0) {
 
 
 // 2. For Loops
-// For loops are similar to while loops in that they can be used to create a counting sequence. However, for loops are also supremely useful in 
-// iterating through the values of an array.
-// The basic logic of a for loop, is that while the input value is less than or greater than the target value, the code will execute, and increment or
-// decrement the input value.
+// For loops create a couting sequence that allows us to repeat a block of code. They are comprised of 3 statements:
+// - start: This is where we start counting to begin the seqence.
+// - stop: This is when the sequence stop and the loop ends.
+// - update: This is the pattern in which the sequence proceeds to the next iteration. 
+// Example:
 
-{
+for (let i = 0; i <array.length; i++) {}
+//      Start           End     Update  ==> This looping sequence starts at 0. It will end when it reaches the last index of the given array. It will update by incrementing by 1 for each iteration.
+
+
 let array  = [1, 2, 3, 4, 5];
 
 for (let i = 0; i < array.length; i++) {
 
     console.log(array[i]);
 }
-}
+
 
 // In this example, expect the console to show 1 2 3 4 5. Because arrays are indexed data types with indexes starting at 0, it will print each value of the 
 // array, starting with the value at the 0 index, and continuing until the index is no longer less than the length of the array. Since the array has 5 items,
@@ -121,7 +125,7 @@ console.log(newName);
 // For-in loops iterate through objects to access object keys or values.
 // The basic logic of a for-in loop is that, as long as the object has more keys, the loop will continue to iterate through the object.
 
-{
+
 let person = {
     name: 'Jordan',
     class: 'Bootcamp', 
@@ -131,7 +135,7 @@ let person = {
 for (let key in person) {
     console.log(key);
 }
-}
+
 
 // In this example, expect the keys of the object to print to the console: name class age.
 
